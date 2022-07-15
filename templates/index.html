@@ -1,0 +1,148 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+          {% for i in our %}
+    <title>{{i.name}}</title>
+     {% endfor %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+          <link rel="stylesheet" href=" {% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css'%}">
+        <link rel="stylesheet" href="{%static 'fonts/font-awesome.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css'%}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css'%}">
+
+
+    <link rel="stylesheet" href="{% static 'css/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+     <link rel="stylesheet" href="{% static 'css/custom.css'%}">
+
+  	<link rel="stylesheet" type="text/css" href="{% static 'fontawesome-free/css/all.min.css' %}" />
+
+  </head>
+  <body>
+
+	   <nav style="background:rgb(224,124,15);color: #0a68a3 " class="navbar navbar-expand-lg navbar-dark" id="ftco-navbar" >
+	   <div class="container">
+
+              <a class="navbar-brand" href="{% url 'home' %}">
+                     {% for i in our %}
+              <img   class=" nav-icon nav-border"  src= "/media/{{i.logo}}" style="width:100px;padding: 20px" alt="error">
+   {{partone}} <span>{{ parttwo }}</span>
+
+       {% endfor %}
+          </a>
+
+
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
+
+	      <div class="collapse navbar-collapse" id="ftco-nav" >
+	        <ul class="navbar-nav ml-auto" >
+
+              {% if user.is_authenticated %}
+
+              {% else %}
+
+            {% endif %}
+                <li class="nav-item dropdown">
+		        <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		         {% if user.is_authenticated %}
+		          <i class="fa fa-user"></i> {{ user }}
+                    {% else %}
+                      <i class="fa fa-user"></i> Accounts
+                      {% endif %}
+		        </a>
+		        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		      {% if user.is_authenticated %}
+                     <a class="dropdown-item" href="{% url 'admin:index' %}" >Home</a>
+
+		        	<a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+	        	{% else %}
+	        		<a class="dropdown-item" href="{% url 'admin:index' %}">Login</a>
+
+		        {% endif %}
+		        </div>
+		      </li>
+            </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+
+   {% block content %}
+    {% endblock %}
+
+
+       {% for i in our %}
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2"><a href="#" class="logo">{{ partone }} <span>{{ parttwo }}</span></a></h2>
+              <p>{{ i.about_the_company }}</p>
+
+              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                <li class="ftco-animate"><a href="{{ i.twitteraddress }}"><span class="icon-twitter"></span></a></li>
+                <li class="ftco-animate"><a href="{{ i.facebookaddress }}"><span class="icon-facebook"></span></a></li>
+                <li class="ftco-animate"><a href="{{ i.instagramaddress }}"><span class="icon-instagram"></span></a></li>
+              </ul>
+            </div>
+          </div>
+
+
+          <div class="col-md">
+            <div class="ftco-footer-widget mb-4">
+            	<h2 class="ftco-heading-2">Have a Questions?</h2>
+            	<div class="block-23 mb-3">
+	              <ul>
+	                <li><span class="icon icon-map-marker"></span><span class="text">{{ i.location }}</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">{{ i.phonenumber }} /</span> / {{ i.phonenumber2 }}</a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">{{ i.email_address }}</span></a></li>
+	              </ul>
+	            </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+{% endfor %}
+   <script type="text/javascript"  src="{% static 'js/jquery.min.js'%}"></script>
+      <script type="text/javascript"  src="{% static 'js/jquery-migrate-3.0.1.min.js'%}"></script>
+        <script type="text/javascript"  src="{% static 'js/popper.min.js'%}"></script>
+
+        <script type="text/javascript"  src="{% static 'js/bootstrap.min.js'%}"></script>
+
+
+
+
+  <script type="text/javascript"  src="{% static 'js/jquery.magnific-popup.min.js'%}"></script>
+
+
+  <script type="text/javascript"  src="{% static 'js/main.js'%}"></script>
+
+
+
+	<script type="text/javascript" src="{% static 'js/bs4/bootstrap.min.js' %}"></script>
+
+
+
+
+  </body>
+</html>

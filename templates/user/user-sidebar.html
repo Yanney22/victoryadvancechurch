@@ -1,0 +1,9 @@
+       <section class="ftco-section" style="text-align: center">
+<div class="list-group">
+	<a href="{% url 'my_dashboard' %}" class="list-group-item
+{% if request.path == '/my-dashboard' %}{% endif %}">Total Payments This Year</a>
+	<a href="{% url 'my_purchases' %}" class="list-group-item
+{% if request.path == '/my-purchases' %} {% endif %}">Total Purchases This Year</a>
+  	<a href="{% url 'logout' %}" class="text-danger list-group-item">Logout</a>
+</div>
+</section>
